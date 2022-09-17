@@ -1,0 +1,21 @@
+<div class="favoritesViewH1">
+    <h1>Favorites</h1>
+    <% favorites.forEach(favorite => { %>
+        <div class="favorites">
+            <h5><a href="<%= favorite.artistName %>" target="_blank" <%= favorite.trackName %> ></a></h5>
+            <form class="button" action="/favorites/?_method=DELETE" method="POST">
+                <input hidden type="text" name="name" value="<%= favorite.trackName %>">
+                <input hidden type="text" name="link" value="<%= favorite.artistName %>">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    <% }) %>
+</div>
+
+<div class="favoritesPageSearch">
+    <a href="/search">Search</a>
+</div>
+
+<div class="favoritesPageHomeButton">
+    <a href="/">Return Home</a>
+</div>

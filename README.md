@@ -706,3 +706,8 @@ npm start
 `3` Push final changes to Github.
 
 `4` Make this repo a **Template** on Github for future projects (i.e. Project 2) ✅
+
+## WireFrame
+![Wireframe](https://user-images.githubusercontent.com/107227057/190870405-6efec30c-3282-4208-abbb-8340371a8585.png)
+## ERD
+![ERD](https://user-images.githubusercontent.com/107227057/190870417-a7cc613a-a84e-4d65-83d1-b60bf18bd578.png)

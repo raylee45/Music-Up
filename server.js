@@ -12,6 +12,9 @@ console.log('yooooo..... >>>', SECRET_SESSION);
 
 app.set('view engine', 'ejs');
 
+/**
+ * app.use routes
+*/
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
@@ -35,18 +38,39 @@ app.use((req, res, next) => {
   next();
 })
 
+// app.use('/auth', require('./controllers/auth'));
+// app.use('/profile', require('./controllers/user'))
+app.use('/favorites', require('./controllers/favorites'))
+// app.use('/search', require('./controllers/search'))
 
+
+/*
+* app.get routes
+*/
 app.get('/', (req, res) => {
   res.render('index');
 })
 
-app.use('/auth', require('./controllers/auth'));
-
-// Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });
 });
+
+app.get('/favorites', isLoggedIn, (req, res) => {
+  res.render('favorites/faves')
+})
+
+app.get('/search', isLoggedIn, (req, res) => {
+  res.render('search/search')
+})
+
+app.get('/search/results', isLoggedIn, (req, res) => {
+  res.render('search/results')
+})
+
+app.get('/search/history', isLoggedIn, (req, res) => {
+  res.render('search/history')
+})
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
