@@ -1,4 +1,4 @@
-#Tune Up
+# Tune Up
 
 Connect with people that share common favorite artists/songs with you while keeping track of all your favorite artists/songs all in your personal profile!
 Tune Up is a CRUD RESTful API application, in which utilizses Node.js, Express.js and POSTgreSQL Explorer. Tune Up obtains all data from 
