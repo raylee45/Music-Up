@@ -1,0 +1,19 @@
+<h2 style="color:skyblue">What would you like to search?</h2>
+<div class="suggestions">
+  <h5>Search either by artist or song.</h5>
+</div>
+  <form method="POST" action="/search/results">
+    <label for="search" class="searchLabel">Artist:</label>
+      <input type="text" name="artist" placeholder="type artist name here" autocomplete="off" class="searchInput">
+    <p class="searchLabel">or</p>
+    <label for="song" class="searchLabel">Song:</label>
+    <input type="text" name="song" placeholder="type song name here" autocomplete="off" class="searchInput">
+    <br>
+    <br>
+    <input class="submit" type="submit">
+  </form>
+</br>
+</br>
+<div class="home">
+  <p>Data will be returned using Shazam API</p>
+</div>

@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <base href="/">
     <link rel="stylesheet" href="css/style.css">
-    <title>Tune Up</title>
+    <title class="tune-up">Tune Up</title>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-              <% if (!currentUser) { %>
-                <li><a class="navigation" href="/auth/signup">Signup</a></li>
-                <li><a class="navigation" href="/auth/login">Login</a></li>
-              <% } else { %>
+            <ul class="navigation">
+              <% if (currentUser) { %>
+                <li><a class="navigation" href="/">Home</a></li>
                 <li><a class="navigation" href="/search">Search</a></li>
                 <li><a class="navigation" href="/profile">Profile</a></li>
                 <li><a class="navigation" href="/auth/logout">Logout</a></li>
+              <% } else { %>
+                  <h3>Welcome!</h3>
               <% } %>
             </ul>
           </nav>
-          <h1>Tune Up</h1>
+          <h1 class="tune-up">Tune Up</h1>
     </header>
     <%- include('partials/alerts') %>
     <%- body %> 

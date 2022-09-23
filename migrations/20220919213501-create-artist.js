@@ -1,27 +1,26 @@
 'use strict';
-
-const favorite = require("../models/favorite");
-
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('favorites', {
+    await queryInterface.createTable('artists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      trackName: {
+      name: {
         type: Sequelize.STRING
       },
-      artistName: {
+      webURL: {
+        type: Sequelize.STRING,
+        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+        unique: true,
+      },
+      image: {
         type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER
-      },
-      key: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('favorites');
+    await queryInterface.dropTable('artists');
   }
 };

@@ -1,3 +1,21 @@
 <div class="results">
-    <a href="/search">Back to Search</a>
+    <a href="/search">Return to Search</a>
+</div>
+
+<div>
+    <div>
+        <% result.forEach(song => { %>
+            <p><%= song.title %> </p>
+            <p sytle="font-size: small"><%= song.subtitle %> </p>
+            <img src="<%= song.image %>" class="images">
+            <form method="POST" action="/favorites">
+                <input hidden type="text" name="trackName" value="<%= song.title %>">
+                <input hidden type="text" name="artistName" value="<%= song.subtitle %>">
+                <input hidden type="text" name="artists" value="<%= song.artists %>">
+                <input hidden type="text" name="key" value="<%= song.key %>">
+                <input hidden type="text" name="weburl" value="<%= song.weburl %>">
+                <button type="submit">Add to Favorites</button>
+            </form>
+    </div>
+        <% }) %>
 </div>

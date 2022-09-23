@@ -1,29 +1,42 @@
-require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-
-const request = require('request'); // this requests from the library of data
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 // Shazam API
 const axios = require("axios");
 
-const options = {
-  method: 'GET',
-  url: 'https://shazam.p.rapidapi.com/search',
-  params: {term: 'kiss the rain', locale: 'en-US', offset: '0', limit: '5'},
-  headers: {
-    'X-RapidAPI-Key': 'b94407a4e5msh62abba97a6403f5p1726b9jsn6d78e721524e',
-    'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
-  }
-};
+router.post('/results', isLoggedIn, (req, res) => {
+  const options = {
+    method: 'GET',
+    url: 'https://shazam.p.rapidapi.com/search',
+    params: {term: req.body.artist?
+      req.body.artist:
+      req.body.song , locale: 'en-US', offset: '0', limit: '10'},
+    headers: {
+      'X-RapidAPI-Key': process.env.APIkey,
+      'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    // console.log(response.data);
+      const result = response.data.tracks.hits.map((song,idx) => {
+        return{
+          title: song.track.title,
+          subtitle: song.track.subtitle,
+          image: song.track.images.coverart,
+          key: song.track.key,
+          artists: JSON.stringify(response.data.artists.hits.map((artist) => {
+            return artist.artist
+          }))
+        }
+      })
+      res.render('search/results', {result})
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+})
 
-axios.request(options).then(function (response) {
-	// console.log(response.data);
-    const result = response.data
-    console.log(JSON.stringify(result))
-}).catch(function (error) {
-	console.error(error);
-});
-
-module.exports = router;
+module.exports = router

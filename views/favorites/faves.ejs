@@ -1,16 +1,39 @@
-<div class="favoritesViewH1">
+<div>
     <h1>Favorites</h1>
-    <% favorites.forEach(favorite => { %>
-        <div class="favorites">
-            <h5><a href="<%= favorite.artistName %>" target="_blank" <%= favorite.trackName %> ></a></h5>
-            <form class="button" action="/favorites/?_method=DELETE" method="POST">
-                <input hidden type="text" name="name" value="<%= favorite.trackName %>">
-                <input hidden type="text" name="link" value="<%= favorite.artistName %>">
-                <input type="submit" value="Delete">
+    <!-- <% console.log('@@@@@@@@@@@@@@@@@@@@@@@') %>  -->
+    <% favorites.forEach((favoriteSong) => { %>
+        <% const com = comment.filter(comm => comm.key === favoriteSong.key) %> 
+    <div class="favoritesPage">  
+    <form action="/favorites/<%= favoriteSong.id %>?_method=DELETE" method="POST">
+        <input class="deleteButton" type="submit" value="Delete">
+    </form>
+    <h5>Song: "<%= favoriteSong.trackName %>" by Artist: <%= favoriteSong.artistName %></h5>
+    </div>
+    <h5>Comments:</h5>
+        <div class="comment">
+                <ul>
+                <% if(Array.isArray(com) && com.length > 0) { %>
+                    <% com.forEach(com => { %>
+                    <div>
+                        <p style="font-size: small;"><%= com.content %></p>
+                        <p style="padding-left: 40px; font-weight: bold; font-size: small">- <%= com.name %></p>
+                        <p style="font-size:xx-small "><%= com.updatedAt %></p> 
+                    </div>
+                <%  }) %> 
+                <% } else { %>
+                    <div>
+                        <div>
+                        No comments posted...
+                        </div>
+                    </div>
+                <% } %>
+            <form method="POST" action="/favorites/<%= favoriteSong.key %>/comment ">
+                <input name="content" type="text" placeholder="Comment">
+                <button type="submit">Post</button>
             </form>
+                    </div>
         </div>
-    <% }) %>
-</div>
+        <% }) %>
 
 <div class="favoritesPageSearch">
     <a href="/search">Search</a>
@@ -18,4 +41,5 @@
 
 <div class="favoritesPageHomeButton">
     <a href="/">Return Home</a>
+</div>
 </div>

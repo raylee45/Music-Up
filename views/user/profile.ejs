@@ -1,9 +1,11 @@
-<h2><%= currentUser.name %>'s Profile</h2>
+<div>
+    <a href="/favorites/artist">See Favorite Artists</a>
+    <br>
+    <a href="/favorites">See Favorite Tracks</a>
+    <p class="profile">Hi <%= user.name %>!</p>
+    <p class="profile">email: <%= user.email %> </p>
+</div>
 
 <form action="/profile/edit">
-    <button type="submit">Edit</button>
+    <button type="submit">Edit Profile</button>
 </form>
-
-<div>
-    <a href="/favorites">See Favorites</a>
-</div>

@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const db = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log('yooooo..... >>>', SECRET_SESSION);
@@ -38,38 +39,37 @@ app.use((req, res, next) => {
   next();
 })
 
-// app.use('/auth', require('./controllers/auth'));
-// app.use('/profile', require('./controllers/user'))
+app.use('/auth', require('./controllers/auth'))
+app.use('/profile', require('./controllers/user'))
 app.use('/favorites', require('./controllers/favorites'))
-// app.use('/search', require('./controllers/search'))
-
+app.use('/search', require('./controllers/search'))
 
 /*
 * app.get routes
 */
-app.get('/', (req, res) => {
-  res.render('index');
+// home route
+app.get('/', (req, res)=>{
+  res.render('home')
 })
 
-app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
-});
-
-app.get('/favorites', isLoggedIn, (req, res) => {
-  res.render('favorites/faves')
-})
-
-app.get('/search', isLoggedIn, (req, res) => {
+// search route
+app.get('/search', isLoggedIn, (req, res)=>{
   res.render('search/search')
 })
 
-app.get('/search/results', isLoggedIn, (req, res) => {
+// search results route
+app.get('/search/results', isLoggedIn, (req, res)=>{
   res.render('search/results')
 })
 
-app.get('/search/history', isLoggedIn, (req, res) => {
-  res.render('search/history')
+// favorites route
+app.get('/favorites', isLoggedIn, (req, res)=>{
+  res.render('favorites/faves')
+})
+
+// artist route
+app.get('/search/artist', isLoggedIn, (req, res)=>{
+  res.render('search/artist')
 })
 
 const PORT = process.env.PORT || 3000;

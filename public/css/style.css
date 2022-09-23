@@ -5,9 +5,75 @@ nav ul li {
 }
 
 h1 {
-  color: chartreuse;
+  color: rgb(237, 153, 183);
 }
 
-.lofi-girl {
-  margin-top: 20px;
+.text-center {
+  text-align: center;
+}
+
+.tune-up {
+  color: rgb(85, 160, 201);
+  text-align: center;
+}
+
+.navigation {
+  text-align: start;
+}
+
+.profile {
+  color: mediumslateblue;
+}
+
+.images {
+  width: 200px;
+  height: 200px;
+}
+
+.favoriteSongs {
+  border: 5px;
+  border-style: solid;
+}
+
+.favoritesPage {
+  background-color: lavenderblush;
+}
+
+.home {
+  text-align: center;
+  background-color: thistle;
+}
+
+.submit {
+  background-color: thistle;
+  color: dimgrey;
+}
+
+.searchInput {
+  background-color: black;
+  color: pink;
+}
+
+.searchLabel {
+  color:darkgray;
+  font-weight: 700;
+}
+
+.comment {
+  border-style: solid;
+  border-color: skyblue;
+  border-width: medium;
+  margin-top: -20px;
+  margin-left: 20px;
+}
+
+.deleteButton {
+  background-color: thistle;
+  color: dimgrey;
+}
+
+.artistPage {
+  border-style:double;
+  border-color: rgb(87, 170, 205);
+  border-width: 3px;
 }
