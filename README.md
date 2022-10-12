@@ -63,3 +63,6 @@ SECRET_SESSION=alldayidreamaboutsoftwareengineering inside of .env file
 ```js
     npm start
 ```    
+
+## App:
+![Screen Shot 2022-10-11 at 8 55 39 PM](https://user-images.githubusercontent.com/107227057/195246514-51d6b17c-de5d-4ebe-93ea-d93f8127aab4.png)
