@@ -1,5 +1,4 @@
 require('dotenv').config();
-Object.values(process.env).forEach((v) => console.log(v));
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const app = express();
