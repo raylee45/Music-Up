@@ -1,7 +1,7 @@
 # Tune Up
 
-Connect with people that share common favorite artists/songs with you while keeping track of all your favorite artists/songs all in your personal profile!
-Tune Up is a CRUD RESTful API application, in which utilizses Node.js, Express.js and POSTgreSQL Explorer. Tune Up obtains all data from 
+Connect with people that share common favorite artists/songs while keeping track of them all in your personal profile!
+Tune Up is a CRUD RESTful API application, in which utilizes Node.js, Express.js and POSTgreSQL Explorer. Tune Up obtains all data from 
 Shazam API, in which provides REST API endpoints that exposes all of Shazam's features.
 
 All the tech stacks that are used in this application are:
